@@ -17,12 +17,17 @@
   },
   "devDependencies": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "qunitjs": "^1.0.0",
     "webpack": "4.39.2",
     "webpack-cli": "3.3.6"
 =======
     "bower": "1.8.0",
     "eslint": "4.18.2",
+=======
+    "bower": "1.8.8",
+    "eslint": "3.10.0",
+>>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/bower-1.8.8
     "eslint-config-standard": "6.2.1",
     "eslint-loader": "1.6.1",
     "eslint-plugin-promise": "3.3.2",

@@ -5,6 +5,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/is-my-json-valid-2.20.0
@@ -14,6 +15,8 @@
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/js-yaml-3.13.1
 =======
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/lodash-4.17.15
+=======
+>>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/bower-1.8.8
 
 
 Base64@~0.2.0:
@@ -355,6 +358,7 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/eslint-4.18.2
 
+<<<<<<< HEAD
 assign-symbols@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/assign-symbols/-/assign-symbols-1.0.0.tgz#59667f41fadd4f20ccbc2bb96b8d4f7f78ec0367"
@@ -385,6 +389,8 @@ balanced-match@^1.0.0:
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/js-yaml-3.13.1
 =======
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/lodash-4.17.15
+=======
+>>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/bower-1.8.8
 bcrypt-pbkdf@^1.0.0:
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/stringstream-0.0.6
   version "1.0.0"
@@ -453,10 +459,16 @@ braces@^2.3.1, braces@^2.3.2:
     split-string "^3.0.2"
     to-regex "^3.0.1"
 
+<<<<<<< HEAD
 brorand@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
   integrity sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=
+=======
+bower@1.8.8:
+  version "1.8.8"
+  resolved "https://registry.yarnpkg.com/bower/-/bower-1.8.8.tgz#82544be34a33aeae7efb8bdf9905247b2cffa985"
+>>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/bower-1.8.8
 
 browserify-aes@^1.0.0, browserify-aes@^1.0.4:
   version "1.2.0"
@@ -1091,6 +1103,7 @@ end-of-stream@^1.0.0, end-of-stream@^1.1.0:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 enhanced-resolve@4.1.0, enhanced-resolve@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-4.1.0.tgz#41c7e0bfdfe74ac1ffe1e57ad6a5c6c9f3742a7f"
@@ -1102,6 +1115,8 @@ enhanced-resolve@4.1.0, enhanced-resolve@^4.1.0:
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/js-yaml-3.13.1
 =======
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/lodash-4.17.15
+=======
+>>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/bower-1.8.8
 es6-symbol@3, es6-symbol@~3.1, es6-symbol@~3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/es6-symbol/-/es6-symbol-3.1.0.tgz#94481c655e7a7cad82eba832d97d5433496d7ffa"
@@ -1752,6 +1767,7 @@ inflight@^1.0.4:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.1, inherits@~2.0.3:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
@@ -1765,6 +1781,8 @@ inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.1, inherits@~2.0.3:
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/js-yaml-3.13.1
 =======
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/lodash-4.17.15
+=======
+>>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/bower-1.8.8
 inherits@2, inherits@^2.0.1, inherits@~2.0.0, inherits@~2.0.1:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
@@ -2020,6 +2038,7 @@ isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
 
+<<<<<<< HEAD
 isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
@@ -2032,10 +2051,16 @@ isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
 =======
+=======
+>>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/bower-1.8.8
 isarray@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-0.0.1.tgz#8a18acfca9a8f4177e09abfc6038939b05d1eedf"
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/lodash-4.17.15
+
+isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
 
 isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
   version "1.0.0"
@@ -2326,6 +2351,10 @@ minimist@0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
 
+minimist@0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
+
 minimist@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
@@ -2342,6 +2371,7 @@ minimist@0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 minimist@0.0.8:
   version "0.0.8"
@@ -2409,6 +2439,9 @@ mkdirp@^0.5.0, mkdirp@^0.5.1:
 =======
 "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/lodash-4.17.15
+=======
+"mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
+>>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/bower-1.8.8
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
@@ -2906,6 +2939,7 @@ punycode@^1.2.4, punycode@^1.4.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 punycode@^1.2.4, punycode@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
@@ -2916,10 +2950,16 @@ punycode@^1.2.4, punycode@^1.4.1:
 =======
 =======
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/lodash-4.17.15
+=======
+>>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/bower-1.8.8
 punycode@1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/js-yaml-3.13.1
+
+punycode@^1.2.4, punycode@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
 punycode@^1.2.4, punycode@^1.4.1:
   version "1.4.1"
@@ -3138,6 +3178,7 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 run-queue@^1.0.0, run-queue@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/run-queue/-/run-queue-1.0.3.tgz#e848396f057d223f24386924618e25694161ec47"
@@ -3151,6 +3192,8 @@ run-queue@^1.0.0, run-queue@^1.0.3:
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/js-yaml-3.13.1
 =======
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/lodash-4.17.15
+=======
+>>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/bower-1.8.8
 rimraf@2, rimraf@^2.2.8, rimraf@~2.5.1, rimraf@~2.5.4:
   version "2.5.4"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.5.4.tgz#96800093cbf1a0c86bd95b4625467535c29dfa04"
@@ -3396,6 +3439,7 @@ stream-browserify@^2.0.1:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 stream-each@^1.1.0:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/stream-each/-/stream-each-1.2.3.tgz#ebe27a0c389b04fbcc233642952e10731afa9bae"
@@ -3430,6 +3474,8 @@ stream-shift@^1.0.0:
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/js-yaml-3.13.1
 =======
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/lodash-4.17.15
+=======
+>>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/bower-1.8.8
 string-width@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-1.0.2.tgz#118bdf5b8cdc51a2a7e70d211e07e2b0b9b107d3"
@@ -3492,6 +3538,10 @@ string_decoder@~0.10.25, string_decoder@~0.10.x:
   dependencies:
     safe-buffer "~5.1.0"
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/eslint-4.18.2
+
+string_decoder@~0.10.25, string_decoder@~0.10.x:
+  version "0.10.31"
+  resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
 
 string_decoder@~0.10.25, string_decoder@~0.10.x:
   version "0.10.31"
@@ -3810,11 +3860,14 @@ util-deprecate@~1.0.1:
 util@0.10.3, util@~0.10.3:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/eslint-4.18.2
 =======
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/js-yaml-3.13.1
 =======
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/lodash-4.17.15
+=======
+>>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/bower-1.8.8
   version "0.10.3"
   resolved "https://registry.yarnpkg.com/util/-/util-0.10.3.tgz#7afb1afe50805246489e3db7fe0ed379336ac0f9"
   integrity sha1-evsa/lCAUkZInj23/g7TeTNqwPk=
@@ -3955,6 +4008,10 @@ wordwrap@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.2.tgz#b79669bb42ecb409f83d583cad52ca17eaa1643f"
 
+wordwrap@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.2.tgz#b79669bb42ecb409f83d583cad52ca17eaa1643f"
+
 wordwrap@~0.0.2:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
@@ -3990,11 +4047,14 @@ wordwrap@~1.0.0:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/eslint-4.18.2
 =======
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/js-yaml-3.13.1
 =======
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/lodash-4.17.15
+=======
+>>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/bower-1.8.8
 wrappy@1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
@@ -4060,6 +4120,7 @@ yargs@~3.10.0:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/stringstream-0.0.6
 =======
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/is-my-json-valid-2.20.0
@@ -4069,3 +4130,5 @@ yargs@~3.10.0:
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/js-yaml-3.13.1
 =======
 >>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/lodash-4.17.15
+=======
+>>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/bower-1.8.8
