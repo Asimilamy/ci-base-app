@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Localhost
+ Source Server         : Local Server
  Source Server Type    : MySQL
  Source Server Version : 50724
  Source Host           : localhost:3306
@@ -11,11 +11,31 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 17/03/2020 22:25:16
+ Date: 18/03/2020 11:56:37
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for customers
+-- ----------------------------
+DROP TABLE IF EXISTS `customers`;
+CREATE TABLE `customers`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `address` text CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `notes` text CHARACTER SET latin1 COLLATE latin1_general_ci NULL,
+  `is_active` char(1) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT '1',
+  `created_at` timestamp(0) NOT NULL,
+  `updated_at` timestamp(0) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of customers
+-- ----------------------------
+INSERT INTO `customers` VALUES (1, 'Test Customer', 'Address of test customer', NULL, '1', '2020-03-18 11:50:48', '2020-03-18 11:56:04');
 
 -- ----------------------------
 -- Table structure for menus
@@ -127,15 +147,11 @@ CREATE TABLE `users`  (
   `created_at` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
   `updated_at` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 2, 'johanes', 'joh', 'joh@gmail.com', '$2y$10$xqJpvTGspNuzy/6liXNwSuzgf/BwDZoT9rdQgv5BT8tkwFlbmocdK', NULL, '2009-08-04 07:45:36', '2020-03-15 02:22:43');
-INSERT INTO `users` VALUES (2, 3, 'AdminGudang', 'Gudang', 'Gudang@gmail.com', '3d2172418ce305c7d16d4b05597c6a59', NULL, '2009-08-04 07:45:36', '2009-08-04 07:45:36');
-INSERT INTO `users` VALUES (3, 3, 'AdminAkuntan', 'Akuntan', 'Akuntan@gmail.com', 'b7bc2a2f5bb6d521e64c8974c143e9a0', NULL, '2009-08-04 07:45:36', '2009-08-04 03:42:44');
-INSERT INTO `users` VALUES (4, 3, 'AdminKeungan', 'Keuangan', 'Keuangan@gmail.com', '$2y$10$xqJpvTGspNuzy/6liXNwSuzgf/BwDZoT9rdQgv5BT8tkwFlbmocdK', 'Test notes', '2009-08-04 07:45:36', '2020-03-16 14:07:14');
-INSERT INTO `users` VALUES (5, 1, 'Developer Admin', 'devadmin', 'devadmin@email.com', '$2y$10$9s3pnf21mK0alzhn2fQUWOe4zaSfePK9cTsnPHGidCygQP305.2IO', NULL, '2020-03-11 22:21:16', '2020-03-13 00:47:58');
+INSERT INTO `users` VALUES (1, 1, 'Developer Admin', 'devadmin', 'devadmin@email.com', '$2y$10$9s3pnf21mK0alzhn2fQUWOe4zaSfePK9cTsnPHGidCygQP305.2IO', NULL, '2009-08-04 07:45:36', '2020-03-15 02:22:43');
 
 SET FOREIGN_KEY_CHECKS = 1;

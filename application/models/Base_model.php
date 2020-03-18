@@ -81,8 +81,12 @@ class Base_model extends CI_Model
     {
         $columns = $this->db->list_fields($table);
         foreach ($columns as $column) {
-            if (isset($request[$column]) && !is_null($request[$column])) {
-                $data[$column] = $request[$column];
+            if (isset($request[$column])) {
+                if (!is_null($request[$column]) && $request[$column] != '') {
+                    $data[$column] = $request[$column];
+                } else {
+                    $data[$column] = null;
+                }
             }
         }
         if (empty($data[$primary_key])) {
