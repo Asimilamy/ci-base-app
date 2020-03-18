@@ -4,6 +4,9 @@ if (typeof jQuery === "undefined") {
 
 var overlay = $(".overlay");
 var get_user_menu_url = $("input[name='get_user_menu_url']").val();
+var path = window.location.href;
+path = path.replace(/\/$/, "");
+path = decodeURIComponent(path);
 
 renderUserMenu();
 
@@ -30,10 +33,6 @@ function toggleOverlay(is_visible) {
 }
 
 function setNavigation() {
-	var path = window.location.href;
-	path = path.replace(/\/$/, "");
-	path = decodeURIComponent(path);
-
 	$(".sidebar-menu a").each(function() {
 		var href = $(this).attr("href");
 		if (path.substr(0, href.length) === href) {
@@ -52,7 +51,12 @@ function getUserMenu() {
 		.done(response => {
 			console.log("response :", response);
 			localStorage.setItem("menus", JSON.stringify(response.sidebar));
-			$("ul.sidebar-menu").html(response.sidebar);
+			$("ul.sidebar-menu")
+				.html(response.sidebar)
+				.promise()
+				.done(() => {
+					setNavigation();
+				});
 		})
 		.fail(error => {
 			console.log("error :", error);
@@ -61,10 +65,14 @@ function getUserMenu() {
 
 function renderUserMenu() {
 	var menus = localStorage.getItem("menus");
-	if (menus === "" || menus === "undefined" || menus === null) {
-		getUserMenu();
+	if (path === "http://localhost/my-projects/flashcom/app_pos/admin/auth") {
+		localStorage.clear();
 	} else {
-		$("ul.sidebar-menu").html(JSON.parse(menus));
+		if (menus === "" || menus === "undefined" || menus === null) {
+			getUserMenu();
+		} else {
+			$("ul.sidebar-menu").html(JSON.parse(menus));
+			setNavigation();
+		}
 	}
-	setNavigation();
 }
