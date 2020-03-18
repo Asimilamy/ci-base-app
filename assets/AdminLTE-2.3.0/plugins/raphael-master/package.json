@@ -16,9 +16,20 @@
     "eve-raphael": "0.5.0"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "qunitjs": "^1.0.0",
     "webpack": "4.39.2",
     "webpack-cli": "3.3.6"
+=======
+    "bower": "1.8.0",
+    "eslint": "4.18.2",
+    "eslint-config-standard": "6.2.1",
+    "eslint-loader": "1.6.1",
+    "eslint-plugin-promise": "3.3.2",
+    "eslint-plugin-standard": "2.0.1",
+    "qunitjs": "2.0.1",
+    "webpack": "1.13.3"
+>>>>>>> origin/dependabot/npm_and_yarn/assets/AdminLTE-2.3.0/plugins/raphael-master/eslint-4.18.2
   },
   "scripts": {
     "start": "yarn build-all",
