@@ -74,11 +74,11 @@ $active_group = 'default';
 $query_builder = true;
 
 $db['default'] = array(
-    'dsn'	=> 'mysql:host=localhost;port=3306;dbname=db_app',
+    'dsn'	=> 'mysql:host=localhost;port=3306;dbname=db_app_pos',
     'hostname' => 'localhost',
     'username' => 'root',
     'password' => '',
-    'database' => 'db_app',
+    'database' => 'db_app_pos',
     'dbdriver' => 'pdo',
     'dbprefix' => '',
     'pconnect' => false,

@@ -32,16 +32,28 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" class="form-control" value="{{ $row->name }}">
+                    <label for="code">Code</label>
+                    <input type="text" id="code" name="code" class="form-control" value="{{ $row->code }}" placeholder="Code">
                 </div>
                 <div class="form-group">
-                    <label for="address">Address</label>
-                    <textarea name="address" id="address" cols="30" rows="10" class="form-control">{{ $row->address }}</textarea>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" value="{{ $row->name }}" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="brand">Brand</label>
+                    <input type="text" id="brand" name="brand" class="form-control" value="{{ $row->brand }}" placeholder="Brand">
+                </div>
+                <div class="form-group">
+                    <label for="unit">Unit</label>
+                    <input type="text" id="unit" name="unit" class="form-control" value="{{ $row->unit }}" placeholder="Unit">
+                </div>
+                <div class="form-group">
+                    <label for="qty">Qty</label>
+                    <input type="number" id="qty" name="qty" class="form-control" value="{{ $row->qty }}" placeholder="Qty">
                 </div>
                 <div class="form-group">
                     <label for="notes">Notes</label>
-                    <textarea name="notes" id="notes" cols="30" rows="10" class="form-control">{{ $row->notes }}</textarea>
+                    <textarea name="notes" id="notes" cols="30" rows="10" class="form-control" placeholder="Notes">{{ $row->notes }}</textarea>
                 </div>
             </div>
         </div>

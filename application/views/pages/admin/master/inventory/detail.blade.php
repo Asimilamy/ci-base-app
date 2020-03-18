@@ -27,10 +27,16 @@
         <div class="row">
             <div class="col-xs-12">
                 <dl class="dl-horizontal text-capitalize">
+                    <dt>code :</dt>
+                    <dd>{{ $row->code }}</dd>
                     <dt>name :</dt>
                     <dd>{{ $row->name }}</dd>
-                    <dt>address :</dt>
-                    <dd>{{ $row->address }}</dd>
+                    <dt>brand :</dt>
+                    <dd>{{ $row->brand }}</dd>
+                    <dt>qty :</dt>
+                    <dd>{{ $row->qty }}</dd>
+                    <dt>unit :</dt>
+                    <dd>{{ $row->unit }}</dd>
                     <dt>notes :</dt>
                     <dd>{{ empty($row->notes) ? '-' : $row->notes }}</dd>
                     <dt>created at :</dt>
