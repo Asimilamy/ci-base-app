@@ -49,7 +49,6 @@ function getUserMenu() {
 		url: get_user_menu_url
 	})
 		.done(response => {
-			console.log("response :", response);
 			localStorage.setItem("menus", JSON.stringify(response.sidebar));
 			$("ul.sidebar-menu")
 				.html(response.sidebar)

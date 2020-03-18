@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Local Server
+ Source Server         : Localhost
  Source Server Type    : MySQL
  Source Server Version : 50724
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 18/03/2020 11:56:37
+ Date: 18/03/2020 20:00:58
 */
 
 SET NAMES utf8mb4;
@@ -36,6 +36,39 @@ CREATE TABLE `customers`  (
 -- Records of customers
 -- ----------------------------
 INSERT INTO `customers` VALUES (1, 'Test Customer', 'Address of test customer', NULL, '1', '2020-03-18 11:50:48', '2020-03-18 11:56:04');
+
+-- ----------------------------
+-- Table structure for inventories
+-- ----------------------------
+DROP TABLE IF EXISTS `inventories`;
+CREATE TABLE `inventories`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `brand` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `qty` double(15, 2) NOT NULL,
+  `unit` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `notes` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `is_active` char(1) CHARACTER SET latin1 COLLATE latin1_general_ci NULL DEFAULT '1',
+  `created_at` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `updated_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `code`(`code`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of inventories
+-- ----------------------------
+INSERT INTO `inventories` VALUES (1, '1001', 'Box Panel Indor (2400x800x2000)mm + Acrylic cover ex lokal', '', 10.00, 'Unit', '', '1', '2020-02-28 15:19:54', '2020-02-28 15:19:54');
+INSERT INTO `inventories` VALUES (2, '1002', 'Box Panel Indor (1200x800x300)mm ex lokal', '', 0.00, 'Unit', '', '1', '2020-02-28 15:22:47', '2020-02-28 15:22:47');
+INSERT INTO `inventories` VALUES (3, '1003', 'Box Panel Indoor (1000x800x300)mm ex lokal', '', 0.00, '', '', '1', '2020-02-28 15:22:47', '2020-02-28 15:22:47');
+INSERT INTO `inventories` VALUES (4, '1004', 'Box Panel Indoor (800x600x250)mm ex lokal', '', 1.00, 'Unit', '', '1', '2020-02-28 17:29:09', '2020-02-28 17:29:09');
+INSERT INTO `inventories` VALUES (5, '1128', 'Pipa PVC 3/4\"', 'Wavin', 300.00, 'Pcs', '', '1', '2020-02-28 17:33:47', '2020-02-28 17:33:47');
+INSERT INTO `inventories` VALUES (6, '1129', 'Pipa PVC 2\"', 'Wavin', 0.00, 'Pcs', '', '1', '2020-02-28 17:33:47', '2020-02-28 17:33:47');
+INSERT INTO `inventories` VALUES (7, '1130', 'Pipa PVC 1 1/2', 'Wavin', 0.00, 'Pcs', '', '1', '2020-02-28 17:36:21', '2020-02-28 17:36:21');
+INSERT INTO `inventories` VALUES (8, '1131', 'Flexible PVC 20mm', 'Ega', 800.00, 'Pcs', '', '1', '2020-02-28 17:38:35', '2020-02-28 17:38:35');
+INSERT INTO `inventories` VALUES (9, '1134', 'Klem PVC 20mm', 'Ega', 202.00, 'Pcs', '', '1', '2020-02-28 17:36:21', '2020-02-28 17:36:21');
+INSERT INTO `inventories` VALUES (10, '1135', 'klem PVC 20mm', 'Sigma', 0.00, 'Pcs', '', '1', '2020-02-28 17:38:35', '2020-02-28 17:38:35');
 
 -- ----------------------------
 -- Table structure for menus

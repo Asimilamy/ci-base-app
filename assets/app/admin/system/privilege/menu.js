@@ -54,6 +54,8 @@ $(document).on("submit", "#form", function(e) {
 				afterHidden: function() {
 					toggleOverlay(false);
 					if (response.status !== false) {
+						localStorage.clear();
+						getUserMenu();
 						window.location.replace(response.redirect_to);
 					}
 				}
