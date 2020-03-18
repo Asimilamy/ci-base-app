@@ -65,7 +65,7 @@ function getUserMenu() {
 
 function renderUserMenu() {
 	var menus = localStorage.getItem("menus");
-	if (path === "http://localhost/my-projects/flashcom/app_pos/admin/auth") {
+	if (path.substr(-+"admin/auth".length) === "admin/auth") {
 		localStorage.clear();
 	} else {
 		if (menus === "" || menus === "undefined" || menus === null) {
