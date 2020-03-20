@@ -43,9 +43,10 @@
                     <input type="email" name="email" id="email" class="form-control" value="{{ $row->email }}" placeholder="Email">
                 </div>
                 <div class="form-group">
-                    <label for="privilege_id">Privilege</label>
+                    <label for="privilege_select">Privilege</label>
                     <input type="hidden" name="search_privilege_url" value="{{ base_url('admin/system/privilege/search') }}">
-                    <select name="privilege_id" id="privilege_id" class="form-control privilege-select2">
+                    <input type="hidden" name="privilege_id" value="{{ $row->privilege_id }}">
+                    <select name="privilege_select" id="privilege_select" class="form-control privilege-select2">
                         @if (!empty($row->privilege_id))
                             <option value="{{ $row->privilege_id }}">{{ $row->privilege }}</option>
                         @endif
