@@ -139,17 +139,17 @@
                                         </td>
                                         <td>
                                             <label>
-                                                <input type="checkbox" name="can_read[{{ $menu_child->id }}][{{ $menu->id }}]" class="flat-blue chk-read" value="1" {{ !empty($privilege[$menu_child->id]['can_create']) ? 'checked' : '' }}>
+                                                <input type="checkbox" name="can_read[{{ $menu_child->id }}][{{ $menu->id }}]" class="flat-blue chk-read" value="1" {{ !empty($privilege[$menu_child->id]['can_read']) ? 'checked' : '' }}>
                                             </label>
                                         </td>
                                         <td>
                                             <label>
-                                                <input type="checkbox" name="can_update[{{ $menu_child->id }}][{{ $menu->id }}]" class="flat-blue chk-update" value="1" {{ !empty($privilege[$menu_child->id]['can_create']) ? 'checked' : '' }}>
+                                                <input type="checkbox" name="can_update[{{ $menu_child->id }}][{{ $menu->id }}]" class="flat-blue chk-update" value="1" {{ !empty($privilege[$menu_child->id]['can_update']) ? 'checked' : '' }}>
                                             </label>
                                         </td>
                                         <td>
                                             <label>
-                                                <input type="checkbox" name="can_delete[{{ $menu_child->id }}][{{ $menu->id }}]" class="flat-blue chk-delete" value="1" {{ !empty($privilege[$menu_child->id]['can_create']) ? 'checked' : '' }}>
+                                                <input type="checkbox" name="can_delete[{{ $menu_child->id }}][{{ $menu->id }}]" class="flat-blue chk-delete" value="1" {{ !empty($privilege[$menu_child->id]['can_delete']) ? 'checked' : '' }}>
                                             </label>
                                         </td>
                                     @endif
@@ -172,17 +172,17 @@
                                             </td>
                                             <td>
                                                 <label>
-                                                    <input type="checkbox" name="can_read[{{ $menu_grandchild->id }}][{{ $menu_child->id }}][{{ $menu->id }}]" class="flat-blue chk-read" value="1" {{ !empty($privilege[$menu_grandchild->id]['can_create']) ? 'checked' : '' }}>
+                                                    <input type="checkbox" name="can_read[{{ $menu_grandchild->id }}][{{ $menu_child->id }}][{{ $menu->id }}]" class="flat-blue chk-read" value="1" {{ !empty($privilege[$menu_grandchild->id]['can_read']) ? 'checked' : '' }}>
                                                 </label>
                                             </td>
                                             <td>
                                                 <label>
-                                                    <input type="checkbox" name="can_update[{{ $menu_grandchild->id }}][{{ $menu_child->id }}][{{ $menu->id }}]" class="flat-blue chk-update" value="1" {{ !empty($privilege[$menu_grandchild->id]['can_create']) ? 'checked' : '' }}>
+                                                    <input type="checkbox" name="can_update[{{ $menu_grandchild->id }}][{{ $menu_child->id }}][{{ $menu->id }}]" class="flat-blue chk-update" value="1" {{ !empty($privilege[$menu_grandchild->id]['can_update']) ? 'checked' : '' }}>
                                                 </label>
                                             </td>
                                             <td>
                                                 <label>
-                                                    <input type="checkbox" name="can_delete[{{ $menu_grandchild->id }}][{{ $menu_child->id }}][{{ $menu->id }}]" class="flat-blue chk-delete" value="1" {{ !empty($privilege[$menu_grandchild->id]['can_create']) ? 'checked' : '' }}>
+                                                    <input type="checkbox" name="can_delete[{{ $menu_grandchild->id }}][{{ $menu_child->id }}][{{ $menu->id }}]" class="flat-blue chk-delete" value="1" {{ !empty($privilege[$menu_grandchild->id]['can_delete']) ? 'checked' : '' }}>
                                                 </label>
                                             </td>
                                         </tr>

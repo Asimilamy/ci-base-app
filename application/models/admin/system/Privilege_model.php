@@ -126,47 +126,32 @@ class Privilege_model extends CI_Model
      */
     public function create_menu_request($request)
     {
+        $response = [];
         $accesses = ['can_create', 'can_read', 'can_update', 'can_delete'];
         $total_menu = count($request['menu_id']);
         for ($i = 0; $i < $total_menu; $i++) {
-            $child_id = $request['menu_id'][$i];
-            if (
-                isset($request['can_create'][$child_id]) ||
-                isset($request['can_read'][$child_id]) ||
-                isset($request['can_update'][$child_id]) ||
-                isset($request['can_delete'][$child_id])
-            ) {
-                $response[$child_id] = [
-                    'privilege_id' => $request['id'],
-                    'created_at' => date('Y-m-d H:i:s'),
-                ];
-                foreach ($accesses as $access) {
-                    if (isset($request[$access][$child_id])) {
-                        $privilege = [
-                            'menu_id' => $child_id,
-                            $access => '1'
-                        ];
-                        $response[$child_id] = array_merge($response[$child_id], $privilege);
-                        if (is_array($request[$access][$child_id])) {
-                            foreach ($request[$access][$child_id] as $parent_id => $grandparents) {
-                                if (!isset($response[$parent_id])) {
-                                    $response[$parent_id] = [
-                                        'privilege_id' => $request['id'],
-                                        'menu_id' => $parent_id,
-                                        'created_at' => date('Y-m-d H:i:s')
-                                    ];
-                                }
-                                $response[$parent_id] = array_merge($response[$parent_id], [$access => '1']);
-                                if (is_array($grandparents)) {
-                                    foreach ($grandparents as $grandparent_id => $value) {
-                                        if (!isset($response[$grandparent_id])) {
-                                            $response[$grandparent_id] = [
-                                                'privilege_id' => $request['id'],
-                                                'menu_id' => $grandparent_id,
-                                                'created_at' => date('Y-m-d H:i:s')
-                                            ];
-                                        }
-                                        $response[$grandparent_id] = array_merge($response[$grandparent_id], [$access => '1']);
+            $menu_id = $request['menu_id'][$i];
+            foreach ($accesses as $access) {
+                if (!isset($response[$menu_id])) {
+                    $response[$menu_id] = [
+                        'privilege_id' => $request['id'],
+                        'menu_id' => $menu_id,
+                        'created_at' => date('Y-m-d H:i:s'),
+                        $access => 0
+                    ];
+                } else {
+                    $response[$menu_id] = array_merge($response[$menu_id], [$access => 0]);
+                }
+                if (isset($request[$access][$menu_id])) {
+                    $response[$menu_id][$access] = 1;
+                    if (is_array($request[$access][$menu_id])) {
+                        foreach ($request[$access][$menu_id] as $parent_id => $grandparent_id) {
+                            $response[$parent_id][$access] = 0;
+                            if (isset($request[$access][$menu_id][$parent_id])) {
+                                $response[$parent_id][$access] = 1;
+                                if (is_array($request[$access][$menu_id][$parent_id])) {
+                                    foreach ($request[$access][$menu_id][$parent_id] as $grandparent_id => $value) {
+                                        $response[$grandparent_id][$access] = isset($request[$access][$menu_id][$parent_id][$grandparent_id]) ? 1 : 0 ;
                                     }
                                 }
                             }

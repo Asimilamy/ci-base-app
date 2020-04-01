@@ -142,7 +142,7 @@ class Menu extends CI_Controller
         $this->db->from('menus AS me')
             ->join('privilege_menus AS p_m', 'p_m.menu_id = me.id', 'left')
             ->select('me.*')
-            ->where(['p_m.privilege_id' => $_SESSION['auth']['privilege_id']]);
+            ->where(['p_m.privilege_id' => $_SESSION['auth']['privilege_id'], 'p_m.can_read' => 1]);
         $query = $this->db->get();
         $result = $query->result();
         $sidebar = view('layouts.admin.db_sidebar', ['menus' => $result]);

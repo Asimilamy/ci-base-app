@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 18/03/2020 20:00:58
+ Date: 01/04/2020 21:46:53
 */
 
 SET NAMES utf8mb4;
@@ -123,24 +123,24 @@ CREATE TABLE `privilege_menus`  (
   `can_delete` char(1) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `created_at` timestamp(0) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = latin1 COLLATE = latin1_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = latin1 COLLATE = latin1_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of privilege_menus
 -- ----------------------------
-INSERT INTO `privilege_menus` VALUES (16, 1, 1, '1', '1', '1', '1', '2020-03-17 22:19:57');
-INSERT INTO `privilege_menus` VALUES (17, 1, 8, '1', '1', '1', '1', '2020-03-17 22:19:57');
-INSERT INTO `privilege_menus` VALUES (18, 1, 9, '1', '1', '1', '1', '2020-03-17 22:19:57');
-INSERT INTO `privilege_menus` VALUES (19, 1, 7, '1', '1', '1', '1', '2020-03-17 22:19:57');
-INSERT INTO `privilege_menus` VALUES (20, 1, 12, '1', '1', '1', '1', '2020-03-17 22:19:57');
-INSERT INTO `privilege_menus` VALUES (21, 1, 10, '1', '1', '1', '1', '2020-03-17 22:19:57');
-INSERT INTO `privilege_menus` VALUES (22, 1, 13, '1', '1', '1', '1', '2020-03-17 22:19:57');
-INSERT INTO `privilege_menus` VALUES (23, 1, 11, '1', '1', '1', '1', '2020-03-17 22:19:57');
-INSERT INTO `privilege_menus` VALUES (24, 1, 2, '1', '1', '1', '1', '2020-03-17 22:19:57');
-INSERT INTO `privilege_menus` VALUES (25, 1, 4, '1', '1', '1', '1', '2020-03-17 22:19:57');
-INSERT INTO `privilege_menus` VALUES (26, 1, 3, '1', '1', '1', '1', '2020-03-17 22:19:57');
-INSERT INTO `privilege_menus` VALUES (27, 1, 5, '1', '1', '1', '1', '2020-03-17 22:19:57');
-INSERT INTO `privilege_menus` VALUES (28, 1, 6, '1', '1', '1', '1', '2020-03-17 22:19:57');
+INSERT INTO `privilege_menus` VALUES (1, 1, 1, '1', '1', '1', '1', '2020-04-01 21:42:15');
+INSERT INTO `privilege_menus` VALUES (2, 1, 9, '1', '1', '1', '1', '2020-04-01 21:42:15');
+INSERT INTO `privilege_menus` VALUES (3, 1, 8, '1', '1', '1', '1', '2020-04-01 21:42:15');
+INSERT INTO `privilege_menus` VALUES (4, 1, 7, '1', '1', '1', '1', '2020-04-01 21:42:15');
+INSERT INTO `privilege_menus` VALUES (5, 1, 10, '1', '1', '1', '1', '2020-04-01 21:42:15');
+INSERT INTO `privilege_menus` VALUES (6, 1, 12, '1', '1', '1', '1', '2020-04-01 21:42:15');
+INSERT INTO `privilege_menus` VALUES (7, 1, 11, '1', '1', '1', '1', '2020-04-01 21:42:15');
+INSERT INTO `privilege_menus` VALUES (8, 1, 13, '1', '1', '1', '1', '2020-04-01 21:42:15');
+INSERT INTO `privilege_menus` VALUES (9, 1, 2, '1', '1', '1', '1', '2020-04-01 21:42:15');
+INSERT INTO `privilege_menus` VALUES (10, 1, 3, '1', '1', '1', '1', '2020-04-01 21:42:15');
+INSERT INTO `privilege_menus` VALUES (11, 1, 4, '1', '1', '1', '1', '2020-04-01 21:42:15');
+INSERT INTO `privilege_menus` VALUES (12, 1, 5, '1', '1', '1', '1', '2020-04-01 21:42:15');
+INSERT INTO `privilege_menus` VALUES (13, 1, 6, '1', '1', '1', '1', '2020-04-01 21:42:15');
 
 -- ----------------------------
 -- Table structure for privileges
