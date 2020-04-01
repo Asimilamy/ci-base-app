@@ -116,6 +116,18 @@ class Customer extends CI_Controller
         $this->form_validation->set_rules('name', 'Name', 'required');
         $this->form_validation->set_rules('address', 'Address', 'required');
     }
+
+    public function search()
+    {
+        $request = $this->input->get();
+        $result = $this->base_model->get_all('customers', ['name LIKE' => '%' . $request['q'] . '%']);
+        $response = [
+            'items' => $result,
+            'total_count' => count($result)
+        ];
+        $this->output->set_content_type('application/json', 'utf-8')
+            ->set_output(json_encode($response));
+    }
 }
 
 /* End of file Customer.php */

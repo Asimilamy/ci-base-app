@@ -75,3 +75,14 @@ function renderUserMenu() {
 		}
 	}
 }
+
+function formatNumber(amount) {
+	try {
+		const formatter = new Intl.NumberFormat("en-US", {
+			minimumFractionDigits: 2
+		});
+		return formatter.format(amount);
+	} catch (e) {
+		console.log(e);
+	}
+}

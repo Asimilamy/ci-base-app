@@ -33,15 +33,16 @@ class Customer_model extends CI_Model
             ),
             array('db' => $this->primaryKey, 'dt' => 2, 'field' => $this->primaryKey),
             array('db' => 'name', 'dt' => 3, 'field' => 'name'),
-            array('db' => 'address', 'dt' => 4, 'field' => 'address'),
+			array('db' => 'address', 'dt' => 4, 'field' => 'address'),
+			array('db' => 'notes', 'dt' => 5, 'field' => 'notes'),
             array(
-                'db' => 'created_at', 'dt' => 5, 'field' => 'created_at',
+                'db' => 'created_at', 'dt' => 6, 'field' => 'created_at',
                 'formatter' => function ($d) {
                     return date('d-m-Y H:i:s', strtotime($d));
                 }
             ),
             array(
-                'db' => 'updated_at', 'dt' => 6, 'field' => 'updated_at',
+                'db' => 'updated_at', 'dt' => 7, 'field' => 'updated_at',
                 'formatter' => function ($d) {
                     return date('d-m-Y H:i:s', strtotime($d));
                 }

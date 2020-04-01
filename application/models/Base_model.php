@@ -84,9 +84,9 @@ class Base_model extends CI_Model
             if (isset($request[$column])) {
                 if (!is_null($request[$column]) && $request[$column] != '') {
                     $data[$column] = $request[$column];
-                } else {
-                    $data[$column] = null;
                 }
+            } else {
+                $data[$column] = null;
             }
         }
         if (empty($data[$primary_key])) {
@@ -146,6 +146,23 @@ class Base_model extends CI_Model
         $query = $this->db->get();
         $result = $query->num_rows();
         return $result;
+    }
+
+    /**
+     * Generate code for transaction
+     * @param String $table
+     * @param String $code
+     * @param String $date
+     * @return String $result
+     */
+    public function create_code($table, $code, $date)
+    {
+        $month = date('m', strtotime($date));
+        $year = date('Y', strtotime($date));
+        $date_format = date('Y/m', strtotime($date));
+        $count = $this->count_data($table, ['MONTH(created_at)' => $month, 'YEAR(created_at)' => $year]);
+        $num = $count + 1;
+        return $code . '/' . $date_format . '/' . $num;
     }
 }
 
