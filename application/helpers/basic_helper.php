@@ -17,4 +17,10 @@ function db_connect()
     return $connection;
 }
 
+function empty_string($str = '', $replacement = '-')
+{
+    $string = empty($str) ? $replacement : $str ;
+    return $string;
+}
+
 /* End of file basic_helper.php */

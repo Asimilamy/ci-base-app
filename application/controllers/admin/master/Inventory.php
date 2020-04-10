@@ -16,7 +16,7 @@ class Inventory extends CI_Controller
         $data = [
             'title' => 'inventory',
             'subtitle' => 'inventory table',
-            'breadcrumbs' => [['' => 'system'], ['' => 'inventory']],
+            'breadcrumbs' => [['' => 'master'], ['' => 'inventory']],
             'csrf_name' => $this->security->get_csrf_token_name(),
             'csrf_hash' => $this->security->get_csrf_hash()
         ];

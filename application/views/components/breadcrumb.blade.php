@@ -1,6 +1,6 @@
 <section class="content-header">
 	<h1 class="text-capitalize">
-		{{ $slot }}
+		{{ ucwords(str_replace('_', ' ', $slot)) }}
 		<small class="text-capitalize">{{ $subtitle }}</small>
 	</h1>
 	<ol class="breadcrumb">

@@ -16,7 +16,15 @@ function submitData(url, element) {
 		url: url,
 		data: new FormData(element),
 		contentType: false,
-		processData: false
+		processData: false,
+	});
+}
+
+function getPage(url, data) {
+	return $.ajax({
+		type: "GET",
+		url: url,
+		data: data,
 	});
 }
 
@@ -33,12 +41,10 @@ function toggleOverlay(is_visible) {
 }
 
 function setNavigation() {
-	$(".sidebar-menu a").each(function() {
+	$(".sidebar-menu a").each(function () {
 		var href = $(this).attr("href");
 		if (path.substr(0, href.length) === href) {
-			$(this)
-				.parentsUntil(".sidebar-menu", "li")
-				.addClass("active");
+			$(this).parentsUntil(".sidebar-menu", "li").addClass("active");
 		}
 	});
 }
@@ -46,9 +52,9 @@ function setNavigation() {
 function getUserMenu() {
 	$.ajax({
 		type: "get",
-		url: get_user_menu_url
+		url: get_user_menu_url,
 	})
-		.done(response => {
+		.done((response) => {
 			localStorage.setItem("menus", JSON.stringify(response.sidebar));
 			$("ul.sidebar-menu")
 				.html(response.sidebar)
@@ -57,7 +63,7 @@ function getUserMenu() {
 					setNavigation();
 				});
 		})
-		.fail(error => {
+		.fail((error) => {
 			console.log("error :", error);
 		});
 }
@@ -79,7 +85,7 @@ function renderUserMenu() {
 function formatNumber(amount) {
 	try {
 		const formatter = new Intl.NumberFormat("en-US", {
-			minimumFractionDigits: 2
+			minimumFractionDigits: 2,
 		});
 		return formatter.format(amount);
 	} catch (e) {

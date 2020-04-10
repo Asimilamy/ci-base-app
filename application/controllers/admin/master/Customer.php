@@ -16,7 +16,7 @@ class Customer extends CI_Controller
         $data = [
             'title' => 'customer',
             'subtitle' => 'customer table',
-            'breadcrumbs' => [['' => 'system'], ['' => 'customer']],
+            'breadcrumbs' => [['' => 'master'], ['' => 'customer']],
             'csrf_name' => $this->security->get_csrf_token_name(),
             'csrf_hash' => $this->security->get_csrf_hash()
         ];
