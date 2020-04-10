@@ -101,6 +101,7 @@ class Menu_model extends CI_Model
         } else {
             $request['level'] = '0';
         }
+        $request['module'] = 'admin';
         $request['link'] = empty($request['link']) || $request['link'] == '#' ? 'javascript:void(0);' : $request['link'] ;
         $request['icon'] = empty($request['icon']) ? 'fa fa-circle-o' : $request['icon'] ;
         $request['is_global'] = !isset($request['is_global']) ? '0' : $request['is_global'] ;
