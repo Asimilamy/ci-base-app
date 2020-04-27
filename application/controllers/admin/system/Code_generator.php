@@ -7,16 +7,8 @@ class Code_generator extends CI_Controller
     {
         parent::__construct();
         check_auth(false, 'admin/auth');
+        $this->load->library(['custom_ssp', 'form_validation']);
         $this->load->model(['base_model', 'admin/system/code_generator_model']);
-    }
-
-    public function _remap(String $method, array $params = [])
-    {
-        if (method_exists($this, $method)) {
-            $this->{$method}($params);
-        } else {
-            $this->index($method);
-        }
     }
 
     public function properties()
@@ -34,27 +26,27 @@ class Code_generator extends CI_Controller
         return $data;
     }
 
-    public function index(String $method)
+    public function index()
     {
         $data = $this->properties();
-        $data['row'] = $this->base_model->get_row('code_generators', ['table' => $method]);
-        $data['code_sample'] = $this->code_generator_model->generate_code($method);
-        $this->output->set_output(view('pages.admin.system.code_generator.index', $data));
+        $this->output->set_output(view('pages.admin.system.code_generator.table', $data));
     }
 
-    public function form()
+    public function datatables()
     {
-        $request = $this->input->get();
+        $data = $this->code_generator_model->ssp_table();
+        $this->output->set_output(json_encode(
+            Custom_ssp::simple($this->input->get(), $data['dbConnection'], $data['table'], $data['primaryKey'], $data['columns'], $data['joinQuery'], $data['where'])
+        ));
+    }
+
+    public function form($id = null)
+    {
         $data = $this->properties();
+        $data['subtitle'] = 'code generator form';
+        $data['row'] = $this->base_model->get_row('code_generators', ['id' => $id]);
         $data['on_reset_options'] = $this->code_generator_model->on_reset_options();
-        $data['row'] = $this->base_model->get_row('code_generators', ['table' => $request['module']]);
-        $view = view('pages.admin.system.code_generator.form', $data);
-        $response = [
-            'view' => $view
-        ];
-        $this->output
-            ->set_content_type('application/json', 'utf-8')
-            ->set_output(json_encode($response));
+        $this->output->set_output(view('pages.admin.system.code_generator.form', $data));
     }
 
     public function detail()

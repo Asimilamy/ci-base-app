@@ -6,6 +6,55 @@ class Code_generator_model extends CI_Model
     protected $table = 'code_generators';
     protected $primaryKey = 'id';
 
+    /**
+     * Render datatables
+     * @return Array $response
+     */
+    public function ssp_table()
+    {
+        $this->load->helper('basic');
+        $csrf_name = $this->security->get_csrf_token_name();
+        $csrf_hash = $this->security->get_csrf_hash();
+
+        $data['dbConnection'] = db_connect();
+        $data['table'] = $this->table;
+        $data['primaryKey'] = $this->primaryKey;
+        $data['columns'] = array(
+            array(
+                'db' => $this->primaryKey, 'dt' => 1, 'field' => $this->primaryKey,
+                'formatter' => function ($d) use ($csrf_name, $csrf_hash) {
+                    $data = [
+                        'csrf_name' => $csrf_name,
+                        'csrf_hash' => $csrf_hash,
+                        'id' => $d
+                    ];
+                    return view('pages.admin.master.inventory.table_btn', $data);
+                }
+            ),
+            array('db' => $this->primaryKey, 'dt' => 2, 'field' => $this->primaryKey),
+            array('db' => 'at_table', 'dt' => 3, 'field' => 'at_table'),
+            array('db' => 'at_column', 'dt' => 4, 'field' => 'at_column'),
+            array('db' => 'format', 'dt' => 5, 'field' => 'format'),
+            array('db' => 'on_reset', 'dt' => 6, 'field' => 'on_reset'),
+            array(
+                'db' => 'created_at', 'dt' => 7, 'field' => 'created_at',
+                'formatter' => function ($d) {
+                    return date('d-m-Y H:i:s', strtotime($d));
+                }
+            ),
+            array(
+                'db' => 'updated_at', 'dt' => 8, 'field' => 'updated_at',
+                'formatter' => function ($d) {
+                    return date('d-m-Y H:i:s', strtotime($d));
+                }
+            ),
+        );
+        $data['joinQuery'] = '';
+        $data['where'] = '';
+
+        return $data;
+    }
+
     public function on_reset_options()
     {
         $opts = [
