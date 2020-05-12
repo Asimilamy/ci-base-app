@@ -63,4 +63,5 @@ if (code_parts.length > 0) {
 	}
 } else {
 	this.parts.push(new AddPart("", "", ""));
+	this.parts.push(new AddPart("", "", ""));
 }

@@ -83,7 +83,7 @@
                                 <button type="button" class="btn btn-success btn-flat btn-add-code-part" title="Add Code Part" data-toggle="tooltip" data-bind="visible: $index() < 1, click: addPart">
                                     <i class="fa fa-plus"></i>
                                 </button>
-                                <button type="button" class="btn btn-danger btn-flat btn-remove-code-part" title="Remove Code Part" data-toggle="tooltip" data-bind="visible: $index() > 0, click: removePart">
+                                <button type="button" class="btn btn-danger btn-flat btn-remove-code-part" title="Remove Code Part" data-toggle="tooltip" data-bind="visible: $index() > 1, click: removePart">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </div>
