@@ -263,9 +263,9 @@
 					</ul>
 				</li>
 				<!-- Control Sidebar Toggle Button -->
-				<li>
+				{{-- <li>
 					<a href="javascript:void(0);" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-				</li>
+				</li> --}}
 			</ul>
 		</div>
 	</nav>

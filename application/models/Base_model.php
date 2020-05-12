@@ -84,9 +84,9 @@ class Base_model extends CI_Model
             if (isset($request[$column])) {
                 if (!is_null($request[$column]) && $request[$column] != '') {
                     $data[$column] = $request[$column];
+                } else {
+                    $data[$column] = null;
                 }
-            } else {
-                $data[$column] = null;
             }
         }
         if (empty($data[$primary_key])) {

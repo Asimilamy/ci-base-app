@@ -40,5 +40,16 @@ $(document).on("submit", "form", function (e) {
 		})
 		.fail((error) => {
 			console.log("Error :", error);
+			$.toast({
+				heading: "Error",
+				text: "Sorry system encountered error!",
+				showHideTransition: "slide",
+				icon: "error",
+				loaderBg: "#f2a654",
+				position: "top-right",
+				afterHidden: function () {
+					toggleOverlay(false);
+				},
+			});
 		});
 });

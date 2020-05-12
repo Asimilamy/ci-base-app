@@ -36,6 +36,7 @@
                                 <th>No</th>
                                 <th>Action</th>
                                 <th>ID</th>
+                                <th>Name</th>
                                 <th>Table</th>
                                 <th>Column</th>
                                 <th>Format</th>

@@ -62,7 +62,7 @@
 			</section><!-- /.content -->
 		</div><!-- /.content-wrapper -->
 		@include('layouts.admin.main_footer')
-		@include('layouts.admin.control_sidebar')
+		{{-- @include('layouts.admin.control_sidebar') --}}
 		<!-- Control Sidebar -->
 	</div><!-- ./wrapper -->
 

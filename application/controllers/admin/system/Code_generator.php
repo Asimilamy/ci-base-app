@@ -14,12 +14,10 @@ class Code_generator extends CI_Controller
     public function properties()
     {
         $uris = $this->uri->segment_array();
-        $module = end($uris);
         $data = [
             'title' => 'code_generator',
-            'module' => $module,
-            'subtitle' => $module . ' form',
-            'breadcrumbs' => [['' => 'system'], ['' => 'code_generator'], ['' => $module]],
+            'subtitle' => 'code generator table',
+            'breadcrumbs' => [['' => 'system'], ['' => 'code_generator']],
             'csrf_name' => $this->security->get_csrf_token_name(),
             'csrf_hash' => $this->security->get_csrf_hash()
         ];
@@ -46,137 +44,105 @@ class Code_generator extends CI_Controller
         $data['subtitle'] = 'code generator form';
         $data['row'] = $this->base_model->get_row('code_generators', ['id' => $id]);
         $data['on_reset_options'] = $this->code_generator_model->on_reset_options();
+        $data['code_parts'] = json_encode($this->base_model->get_all('code_generator_parts', ['code_generator_id' => $id]));
+        $data['parts'] = json_encode($this->code_generator_model->code_parts());
+        $data['separators'] = json_encode($this->code_generator_model->code_separators());
         $this->output->set_output(view('pages.admin.system.code_generator.form', $data));
     }
 
-    public function detail()
+    public function detail($id)
     {
-        $request = $this->input->get();
-        $data['row'] = $this->base_model->get_row('code_generators', ['table' => $request['module']]);
-        $data['code_sample'] = $this->code_generator_model->generate_code($request['module']);
+        $data = $this->properties();
+        $data['subtitle'] = 'code generator detail';
+        $data['row'] = $this->base_model->get_row('code_generators', ['id' => $id]);
+        $data['code_sample'] = $this->code_generator_model->generate_code($data['row']->at_table);
         $view = view('pages.admin.system.code_generator.detail', $data);
+        $this->output->set_output($view);
+    }
+
+    public function submit()
+    {
         $response = [
-            'view' => $view
+            'status' => false,
+            'message' => 'WHAT THE FUCK ARE YOU DOING!!!',
+            'FormData' => $this->input->post(),
         ];
+        if ($this->input->method() == 'post') {
+            $request = $this->input->post();
+            $response['csrf_name'] = $this->security->get_csrf_token_name();
+            $response['csrf_hash'] = $this->security->get_csrf_hash();
+            $this->form_rules();
+            if ($this->form_validation->run() == false) {
+                $form_warning = $this->base_model->form_warning($request);
+                $response['message'] = implode('', $form_warning);
+            } else {
+                $this->db->trans_begin();
+                $master = $this->code_generator_model->process($request);
+                $submit = $this->base_model->submit('code_generators', $master);
+                $submit_type = !empty($request['id']) ? 'update' : 'insert' ;
+                if ($submit['status']) {
+                    $request['id'] = $submit['submit_id'];
+                    $detail = $this->code_generator_model->process_part($request);
+                    if ($detail['status']) {
+                        $action['batch'] = $this->db->insert_batch('code_generator_parts', $detail['data']);
+                        $action['update'] = $this->base_model->submit('code_generators', ['id' => $request['id'], 'format' => $detail['format']]);
+                        if ($action['batch'] && $action['update']['status']) {
+                            $this->db->trans_commit();
+                            $response['status'] = true;
+                            $response['message'] = 'Success ' . $submit_type . ' code generator data!';
+                            $response['redirect_to'] = base_url('admin/system/code_generator/detail/' . $submit['submit_id']);
+                        } else {
+                            $this->db->trans_rollback();
+                            $response['message'] = 'Error ' . $submit_type . ' code generator parts!';
+                        }
+                    } else {
+                        $this->db->trans_rollback();
+                        $response = $detail;
+                    }
+                } else {
+                    $this->db->trans_rollback();
+                    $response['message'] = 'Error ' . $submit_type . ' code generator data!';
+                }
+            }
+        }
+
         $this->output
             ->set_content_type('application/json', 'utf-8')
             ->set_output(json_encode($response));
     }
 
-    public function load_view()
+    public function delete()
     {
-        $this->load->model(['base_model', 'setting/code_generators']);
-        $page = $this->input->get('page');
-        $row = $this->base_model->get_row('code_generators', ['table' => $page]);
-        $code_sample = $this->code_generators->generate_code($page);
-        $data = [
-            'row' => $row,
-            'code_sample' => $code_sample,
+        $response = [
+            'status' => false,
+            'message' => 'WHAT THE FUCK ARE YOU DOING!!!'
         ];
-
-        $this->load->view('pages/' . $this->class_link . '/code_generator_view', $data);
-    }
-
-    public function load_form()
-    {
-        $this->load->model(['base_model', 'setting/code_generators']);
-        $page = $this->input->get('page');
-        $row = $this->base_model->get_row('code_generators', ['table' => $page]);
-
-        $data = [
-            'csrf_name' => $this->security->get_csrf_token_name(),
-            'csrf_value' => $this->security->get_csrf_hash(),
-            'class_link' => $this->class_link,
-            'page' => $page,
-            'row' => $row,
-            'code_reset_opts' => $this->code_generators->code_reset_opts(),
-        ];
-        $this->load->view('pages/' . $this->class_link . '/form', $data);
-    }
-
-    public function load_code_part_form()
-    {
-        $no = 0;
-        $this->load->model(['base_model', 'setting/code_generators']);
-        $page = $this->input->get('page');
-        $code_generator = $this->base_model->get_row('code_generators', ['table' => $page]);
-        $code_parts = $this->base_model->get_all('code_generator_parts', ['code_generator_id' => $code_generator->id]);
-        $data = [
-            'parts' => $this->code_generators->code_parts(),
-            'separators' => $this->code_generators->code_separators(),
-            'button' => 'plus',
-            'code_part' => '',
-            'code_unique' => '',
-            'code_separator' => '',
-        ];
-
-        if (!empty($code_parts)) {
-            foreach ($code_parts as $code_part) {
-                $no++;
-                $data['button'] = $no > 1 ? 'minus' : $data['button'] ;
-                $data['code_part'] = $code_part->code_part;
-                $data['code_unique'] = $code_part->code_unique;
-                $data['code_separator'] = $code_part->code_separator;
-
-                $this->load->view('pages/' . $this->class_link . '/code_part_form', $data);
+        if ($this->input->method() == 'post') {
+            $this->db->trans_start();
+            $request = $this->input->post();
+            $response['csrf_name'] = $this->security->get_csrf_token_name();
+            $response['csrf_hash'] = $this->security->get_csrf_hash();
+            $action['master'] = $this->db->delete('code_generators', ['id' => $request['id']]);
+            $action['detail'] = $this->db->delete('code_generator_parts', ['code_generator_id' => $request['id']]);
+            if ($action) {
+                $this->db->trans_commit();
+                $response['status'] = true;
+                $response['message'] = 'Successfully delete data!';
+            } else {
+                $this->db->trans_rollback();
+                $response['message'] = 'Error on deleting data!';
             }
-        } else {
-            $this->load->view('pages/' . $this->class_link . '/code_part_form', $data);
         }
-    }
-
-    public function add_code_format_form()
-    {
-        $this->load->model(['setting/code_generators']);
-        $data = [
-            'parts' => $this->code_generators->code_parts(),
-            'separators' => $this->code_generators->code_separators(),
-            'button' => 'minus',
-            'code_part' => '',
-            'code_unique' => '',
-            'code_separator' => '',
-        ];
-        $this->load->view('pages/' . $this->class_link . '/code_part_form', $data);
-    }
-
-    public function submit_form()
-    {
-        $data = [
-            'inputs' => $this->input->post()
-        ];
-        $this->load->library(['form_validation']);
-        $this->load->model(['base_model', 'setting/code_generators']);
-
-        $title = $this->code_generators->_get('title');
-        $this->code_generators->form_rules();
-        if ($this->form_validation->run() == false) {
-            $msgs = $this->base_model->form_warning($this->input->post());
-            $data['msg'] = build_alert('warning', 'Warning!', implode('', $msgs));
-            $data['status'] = 'error';
-        } else {
-            $master = $this->code_generators->post_data($this->input->post());
-            $data = $this->base_model->submit_data('code_generators', 'id', $title, $master);
-            if ($data['status'] == 'error') {
-                $this->output
-                    ->set_content_type('application/json', 'utf-8')
-                    ->set_output(json_encode($data));
-                exit();
-            }
-            $master_key = $data['key'];
-            $child = $this->code_generators->post_child_data($this->input->post(), $master_key);
-            $data = $this->base_model->submit_batch('code_generator_parts', $title, $child['submit']);
-            if ($data['status'] == 'error') {
-                $this->output
-                    ->set_content_type('application/json', 'utf-8')
-                    ->set_output(json_encode($data));
-                exit();
-            }
-            $data = $this->base_model->submit_data('code_generators', 'id', $title, ['id' => $master_key, 'code_format' => $child['code_format']]);
-        }
-        $data['csrf_val'] = $this->security->get_csrf_hash();
-
         $this->output
             ->set_content_type('application/json', 'utf-8')
-            ->set_output(json_encode($data));
+            ->set_output(json_encode($response));
+    }
+
+    public function form_rules()
+    {
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('at_table', 'Table', 'required');
+        $this->form_validation->set_rules('at_column', 'Column', 'required');
+        $this->form_validation->set_rules('on_reset', 'On Reset', 'required');
     }
 }

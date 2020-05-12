@@ -19,8 +19,8 @@ class Code_generator_model extends CI_Model
         $data['dbConnection'] = db_connect();
         $data['table'] = $this->table;
         $data['primaryKey'] = $this->primaryKey;
-        $data['columns'] = array(
-            array(
+        $data['columns'] = [
+            [
                 'db' => $this->primaryKey, 'dt' => 1, 'field' => $this->primaryKey,
                 'formatter' => function ($d) use ($csrf_name, $csrf_hash) {
                     $data = [
@@ -30,25 +30,26 @@ class Code_generator_model extends CI_Model
                     ];
                     return view('pages.admin.master.inventory.table_btn', $data);
                 }
-            ),
-            array('db' => $this->primaryKey, 'dt' => 2, 'field' => $this->primaryKey),
-            array('db' => 'at_table', 'dt' => 3, 'field' => 'at_table'),
-            array('db' => 'at_column', 'dt' => 4, 'field' => 'at_column'),
-            array('db' => 'format', 'dt' => 5, 'field' => 'format'),
-            array('db' => 'on_reset', 'dt' => 6, 'field' => 'on_reset'),
-            array(
-                'db' => 'created_at', 'dt' => 7, 'field' => 'created_at',
+            ],
+            ['db' => $this->primaryKey, 'dt' => 2, 'field' => $this->primaryKey],
+            ['db' => 'name', 'dt' => 3, 'field' => 'name'],
+            ['db' => 'at_table', 'dt' => 4, 'field' => 'at_table'],
+            ['db' => 'at_column', 'dt' => 5, 'field' => 'at_column'],
+            ['db' => 'format', 'dt' => 6, 'field' => 'format'],
+            ['db' => 'on_reset', 'dt' => 7, 'field' => 'on_reset'],
+            [
+                'db' => 'created_at', 'dt' => 8, 'field' => 'created_at',
                 'formatter' => function ($d) {
                     return date('d-m-Y H:i:s', strtotime($d));
                 }
-            ),
-            array(
-                'db' => 'updated_at', 'dt' => 8, 'field' => 'updated_at',
+            ],
+            [
+                'db' => 'updated_at', 'dt' => 9, 'field' => 'updated_at',
                 'formatter' => function ($d) {
                     return date('d-m-Y H:i:s', strtotime($d));
                 }
-            ),
-        );
+            ]
+        ];
         $data['joinQuery'] = '';
         $data['where'] = '';
 
@@ -94,16 +95,16 @@ class Code_generator_model extends CI_Model
     public function code_parts()
     {
         $opts = [
-            0 => (object) ['key' => 'yyyy', 'value' => 'Year (yyyy)'],
-            1 => (object) ['key' => 'yy', 'value' => 'Year (yy)'],
-            2 => (object) ['key' => 'mm', 'value' => 'Month (mm)'],
-            4 => (object) ['key' => 'dd', 'value' => 'Day (dd)'],
-            6 => (object) ['key' => 'yyyy_roman', 'value' => 'Year Roman (yyyy)'],
-            7 => (object) ['key' => 'yy_roman', 'value' => 'Year Roman (yy)'],
-            8 => (object) ['key' => 'mm_roman', 'value' => 'Month Roman (mm)'],
-            10 => (object) ['key' => 'dd_roman', 'value' => 'Day Roman (dd)'],
-            12 => (object) ['key' => 'increment', 'value' => 'Increment'],
-            13 => (object) ['key' => 'alpha_numeric', 'value' => 'Alpha Numeric'],
+            ['key' => 'yyyy', 'value' => 'Year (yyyy)'],
+            ['key' => 'yy', 'value' => 'Year (yy)'],
+            ['key' => 'mm', 'value' => 'Month (mm)'],
+            ['key' => 'dd', 'value' => 'Day (dd)'],
+            ['key' => 'yyyy_roman', 'value' => 'Year Roman (yyyy)'],
+            ['key' => 'yy_roman', 'value' => 'Year Roman (yy)'],
+            ['key' => 'mm_roman', 'value' => 'Month Roman (mm)'],
+            ['key' => 'dd_roman', 'value' => 'Day Roman (dd)'],
+            ['key' => 'increment', 'value' => 'Increment'],
+            ['key' => 'alpha_numeric', 'value' => 'Alpha Numeric'],
         ];
         return $opts;
     }
@@ -111,15 +112,15 @@ class Code_generator_model extends CI_Model
     public function code_separators()
     {
         $opts = [
-            0 => (object) ['key' => 'n', 'value' => 'None'],
-            1 => (object) ['key' => '.', 'value' => 'Dot (.)'],
-            2 => (object) ['key' => ',', 'value' => 'Comma (,)'],
-            3 => (object) ['key' => '/', 'value' => 'Slash (/)'],
-            4 => (object) ['key' => '\\', 'value' => 'Backslash (\)'],
-            5 => (object) ['key' => '|', 'value' => 'Vertical Line (|)'],
-            6 => (object) ['key' => '-', 'value' => 'Stripe (-)'],
-            7 => (object) ['key' => '_', 'value' => 'Underscore (_)'],
-            7 => (object) ['key' => '&nbsp;', 'value' => 'Space ( )'],
+            ['key' => 'n', 'value' => 'None'],
+            ['key' => '.', 'value' => 'Dot (.)'],
+            ['key' => ',', 'value' => 'Comma (,)'],
+            ['key' => '/', 'value' => 'Slash (/)'],
+            ['key' => '\\', 'value' => 'Backslash (\)'],
+            ['key' => '|', 'value' => 'Vertical Line (|)'],
+            ['key' => '-', 'value' => 'Stripe (-)'],
+            ['key' => '_', 'value' => 'Underscore (_)'],
+            ['key' => '&nbsp;', 'value' => 'Space ( )'],
         ];
         return $opts;
     }
@@ -131,51 +132,52 @@ class Code_generator_model extends CI_Model
         $this->form_validation->set_rules('on_reset', 'On Reset', 'required');
     }
 
-    public function create_request($request)
+    public function process($request)
     {
-        $this->load->model(['base_model']);
-        $delete_child = $this->db->delete('code_generator_parts', ['code_generator_id' => $request['id']]);
-        if ($delete_child) {
-            $this->output
-                ->set_content_type('application/json', 'utf-8')
-                ->set_output(json_encode($delete_child));
-            exit();
-        }
-        $code_column = $this->code_column($request['page']);
-
-        $data = [
+        $response = [
             'id' => $request['id'],
             'name' => $request['name'],
-            'table' => $request['page'],
-            'column' => $code_column,
-            'code_reset' => $request['code_reset'],
+            'at_table' => $request['at_table'],
+            'at_column' => $request['at_column'],
+            'on_reset' => $request['on_reset']
         ];
 
-        return $data;
+        return $response;
     }
 
-    public function post_child_data(array $post_data, string $master_key)
+    public function process_part($request)
     {
-        $code_format = '';
-        $total = count($post_data['code_part']);
-
-        for ($i = 0; $i < $total; $i++) {
-            $code_unique = $post_data['code_part'][$i] == 'urutan_angka' || $post_data['code_part'][$i] == 'kode_huruf' ? $post_data['code_unique'][$i] : null;
-            $format_unique = empty($code_unique) ? '' : '[' . $code_unique . ']';
-            $code_separator = empty_string($post_data['code_separator'][$i], 'n');
-            $format_separator = $code_separator == 'n' ? '' : $code_separator;
-            $data[] = [
-                'code_generator_id' => $master_key,
-                'code_part_order' => $i,
-                'code_part' => $post_data['code_part'][$i],
-                'code_unique' => $code_unique,
-                'code_separator' => $code_separator,
-                'created_at' => date('Y-m-d H:i:s'),
-            ];
-            $code_format .= $post_data['code_part'][$i] . $format_unique . $format_separator;
+        $response = [
+            'status' => false,
+            'message' => 'Please add code part'
+        ];
+        if (isset($request['parts'])) {
+            $data = [];
+            $parts = json_decode($request['parts'], true);
+            $format = '';
+            foreach ($parts as $key => $part) {
+                $value = empty_string($part['value'], null);
+                $separator = $part['separator'] === 'n' ? null : $part['separator'] ;
+                $data[] = [
+                    'code_generator_id' => $request['id'],
+                    'order' => $key,
+                    'part' => $part['part'],
+                    'value' => $value,
+                    'separator' => $part['separator'],
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                ];
+                $value = !empty($value) ? '[' . $value . ']' : $value ;
+                $format .= $part['part'] . $value . $separator;
+            }
+            // Delete previous parts
+            $this->db->delete('code_generator_parts', ['code_generator_id' => $request['id']]);
+            $response['status'] = true;
+            $response['data'] = $data;
+            $response['format'] = $format;
         }
 
-        return ['submit' => $data, 'code_format' => $code_format];
+        return $response;
     }
 
     private function render_code_part(String $part, String $value)
@@ -206,12 +208,12 @@ class Code_generator_model extends CI_Model
         return $code;
     }
 
-    public function generate_code(string $table)
+    public function generate_code(string $at_table)
     {
         $this->load->model(['base_model']);
 
         $code_format = '';
-        $code_generator = $this->base_model->get_row('code_generators', ['table' => $table]);
+        $code_generator = $this->base_model->get_row('code_generators', ['at_table' => $at_table]);
         if (!empty($code_generator->id)) {
             $code_generator_parts = $this->base_model->get_all('code_generator_parts', ['code_generator_id' => $code_generator->id], ['order' => 'ASC']);
 
@@ -223,8 +225,8 @@ class Code_generator_model extends CI_Model
             } elseif ($code_generator->on_reset == 'year') {
                 $params = ['YEAR(created_at)' => date('Y')];
             }
-            $data_row = $this->base_model->get_row($table, $params, ['created_at' => 'DESC', 'id' => 'DESC']);
-            $last_data_code = $data_row->{$code_generator->column};
+            $data_row = $this->base_model->get_row($at_table, $params, ['created_at' => 'DESC', 'id' => 'DESC']);
+            $last_data_code = $data_row->{$code_generator->at_column};
 
             $explode_glues = [];
             $increment = $this->base_model->get_row('code_generator_parts', ['code_generator_id' => $code_generator->id, 'part' => 'increment']);

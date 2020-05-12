@@ -44,14 +44,17 @@
                     </div>
                 </div>
             </div>
-            <hr>
             <div class="row">
                 <div class="col-xs-12">
                     <label for="code_parts">Code Format</label>
                 </div>
             </div>
+            <hr>
             <div class="row">
                 <div class="col-xs-12">
+                    <input type="hidden" name="code_parts" value="{{ $code_parts }}">
+                    <input type="hidden" name="list_part" value="{{ $parts }}">
+                    <input type="hidden" name="list_separator" value="{{ $separators }}">
                     <div class="col-xs-4">
                         <label for="code_part">Code Part</label>
                     </div>
@@ -63,12 +66,41 @@
                     </div>
                 </div>
             </div>
+            <div data-bind="foreach: parts">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="col-md-4">
+                                <select class="form-control code-part" data-bind="options: ListPart, optionsValue: 'key', optionsText: 'value', optionsCaption: 'Choose...', value: part, event: {change: toggleCodeValue}"></select>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="Code Value" data-bind="visible: hasValue, value: value">
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-control code-separator" data-bind="options: ListSeparator, optionsValue: 'key', optionsText: 'value', optionsCaption: 'Choose...', value: separator"></select>
+                            </div>
+                            <div class="col-md-1">
+                                <button type="button" class="btn btn-success btn-flat btn-add-code-part" title="Add Code Part" data-toggle="tooltip" data-bind="visible: $index() < 1, click: addPart">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-flat btn-remove-code-part" title="Remove Code Part" data-toggle="tooltip" data-bind="visible: $index() > 0, click: removePart">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="parts" data-bind="value: ko.toJSON(parts())">
             <hr>
             <div class="row">
                 <div class="col-md-12">
                     <div class="pull-right">
                         <button type="button" class="btn btn-default btn-flat btn-back" title="Back" data-toggle="tooltip">
                             <i class="fa fa-arrow-left"></i> Back
+                        </button>
+                        <button type="submit" class="btn btn-primary btn-flat" title="Submit" data-toggle="tooltip">
+                            <i class="fa fa-save"></i> Submit
                         </button>
                     </div>
                 </div>
@@ -79,12 +111,11 @@
 
 @section('css-content')
     <link rel="stylesheet" href="{{ base_url('node_modules/jquery-toast-plugin/dist/jquery.toast.min.css') }}">
-    <link rel="stylesheet" href="{{ base_url('assets/AdminLTE-2.3.0/plugins/datatables-1.10.15/media/css/dataTables.bootstrap.min.css') }}">
 @endsection
 
 @section('js-content')
     <script src="{{ base_url('node_modules/jquery-toast-plugin/dist/jquery.toast.min.js') }}"></script>
-    <script src="{{ base_url('assets/AdminLTE-2.3.0/plugins/datatables-1.10.15/media/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ base_url('assets/AdminLTE-2.3.0/plugins/datatables-1.10.15/media/js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ base_url('node_modules/knockout/build/output/knockout-latest.js') }}"></script>
+    <script src="{{ base_url('assets/app/admin/system/' . $title . '/knockout.js') }}"></script>
     <script src="{{ base_url('assets/app/admin/system/' . $title . '/form.js') }}"></script>
 @endsection
