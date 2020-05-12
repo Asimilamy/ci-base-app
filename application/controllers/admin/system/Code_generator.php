@@ -13,7 +13,6 @@ class Code_generator extends CI_Controller
 
     public function properties()
     {
-        $uris = $this->uri->segment_array();
         $data = [
             'title' => 'code_generator',
             'subtitle' => 'code generator table',
@@ -98,6 +97,8 @@ class Code_generator extends CI_Controller
                     } else {
                         $this->db->trans_rollback();
                         $response = $detail;
+                        $response['csrf_name'] = $this->security->get_csrf_token_name();
+                        $response['csrf_hash'] = $this->security->get_csrf_hash();
                     }
                 } else {
                     $this->db->trans_rollback();

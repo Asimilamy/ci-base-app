@@ -155,20 +155,34 @@ class Code_generator_model extends CI_Model
             $data = [];
             $parts = json_decode($request['parts'], true);
             $format = '';
+            $total = count($parts);
+            $has_increment = false;
             foreach ($parts as $key => $part) {
-                $value = empty_string($part['value'], null);
-                $separator = $part['separator'] === 'n' ? '-' : $part['separator'] ;
-                $data[] = [
-                    'code_generator_id' => $request['id'],
-                    'order' => $key,
-                    'part' => $part['part'],
-                    'value' => $value,
-                    'separator' => $part['separator'],
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s')
-                ];
-                $value = !empty($value) ? '[' . $value . ']' : $value ;
-                $format .= $part['part'] . $value . $separator;
+                if (!$has_increment) {
+                    $has_increment = $part['part'] == 'increment' ? true : $has_increment ;
+                    $value = empty_string($part['value'], null);
+                    if ($key + 1 < $total) {
+                        $part['separator'] = $part['separator'] == 'n' ? '-' : $part['separator'] ;
+                    } elseif ($key + 1 == $total) {
+                        $part['separator'] = $part['separator'] != 'n' ? 'n' : $part['separator'] ;
+                    }
+                    $data[] = [
+                        'code_generator_id' => $request['id'],
+                        'order' => $key,
+                        'part' => $part['part'],
+                        'value' => $value,
+                        'separator' => $part['separator'],
+                        'created_at' => date('Y-m-d H:i:s'),
+                        'updated_at' => date('Y-m-d H:i:s')
+                    ];
+                    $value = !empty($value) ? '[' . $value . ']' : $value ;
+                    $separator = $part['separator'] === 'n' ? null : $part['separator'] ;
+                    $format .= $part['part'] . $value . $separator;
+                } else {
+                    $response['message'] = 'Code part already has increment value';
+                    return $response;
+                    break;
+                }
             }
             // Delete previous parts
             $this->db->delete('code_generator_parts', ['code_generator_id' => $request['id']]);
