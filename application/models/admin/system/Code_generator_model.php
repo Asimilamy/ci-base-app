@@ -157,7 +157,7 @@ class Code_generator_model extends CI_Model
             $format = '';
             foreach ($parts as $key => $part) {
                 $value = empty_string($part['value'], null);
-                $separator = $part['separator'] === 'n' ? null : $part['separator'] ;
+                $separator = $part['separator'] === 'n' ? '-' : $part['separator'] ;
                 $data[] = [
                     'code_generator_id' => $request['id'],
                     'order' => $key,
@@ -232,7 +232,7 @@ class Code_generator_model extends CI_Model
             $increment = $this->base_model->get_row('code_generator_parts', ['code_generator_id' => $code_generator->id, 'part' => 'increment']);
             $increment_order = $increment->order;
             if (!empty($last_data_code)) {
-                $query = $this->db->select('DISTINCT(separator)')
+                $query = $this->db->select('DISTINCT(`separator`)')
                     ->from('code_generator_parts')
                     ->where(['code_generator_id' => $code_generator->id])
                     ->get();
